@@ -1,0 +1,118 @@
+<DOCTYPE>
+<html>
+<head>
+<title>Contactanos</title>
+<link rel="stylesheet" type="text/css" href="estilos.css" />
+<script language=javascript type=text/javascript>
+	
+	function validacion(){
+	var valorNombre=document.getElementById("registro_nombre").value;
+	var valorCorreo=document.getElementById("registro_email").value;
+	var valorComentario=document.getElementById("registro_comentarios").value;
+	var valorPassword=document.getElementById("registro_password").value;
+	var expresion= /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+	
+	if(valorNombre == null || valorNombre.length == 0 || /^\s+$/.test(valorNombre) )
+	{
+	alert('El campo Nombre es obligatorio')
+	return false;
+	}
+	
+	else if(!expresion.test(valorCorreo))
+	{
+	alert('El correo que ingreso no es valido')
+	return false;
+	}
+	
+	else if(valorPassword == null || valorPassword.length == 0)
+	{
+	alert('El campo Contraseña es obligatorio')
+	return false;
+	}
+	
+	else if(valorComentario=="")
+	{
+	alert('El campo de Comentarios es obligatorio')
+	return false;
+	}
+	
+	
+	else if(valorComentario.length>50)
+	{
+	alert("El comentario excede los 50 caracteres permitidos");
+	return false;
+	}
+	
+	else if(valorPassword.length >= 6)
+	{
+	var mayuscula = false;
+	var minuscula = false;
+	var digito = false;
+
+	for(var i = 0;i<valorPassword.length;i++)
+	{
+	if(valorPassword.charCodeAt(i) >=65 && valorPassword.charCodeAt(i) <=90)
+			{
+			mayuscula=true;
+			}
+	else if(valorPassword.charCodeAt(i) >= 97 && valorPassword.charCodeAt(i) <= 122)
+					{
+						minuscula = true;
+					}
+					else if(valorPassword.charCodeAt(i) >= 48 && valorPassword.charCodeAt(i) <= 57)
+							{
+							digito = true;
+							}
+	}
+	if(mayuscula == true && minuscula== true && digito == true)
+	{
+	return true;
+	}
+	alert("La contraseña no cumple con los requisitos solicitados");
+	return false;
+
+	}
+	return true;
+}
+
+	</script>
+</head>
+<body>
+	<body id="hdr">
+	<h1 align="center">Pequeños avances en la tecnología que marcan una gran diferencia</h1>
+	<nav>
+	<ul>
+ <li><a href="index.html #Gastronomica">Gastronomica</a></li>
+ <li><a href="index.html #Comercio">Comercio</a></li>
+ <li><a href="index.html #medicina">Medicina</a></li>
+ <li><a href="Productos.html #">Productos</a></li>
+ <li><a href="contacto.html">Contacto</a></li>
+ </ul>
+</nav>
+<br>
+<div id="contacto">
+	<center>
+	<h2>Contactanos</h2>
+	
+	<form action="servidor.php" method="POST" id="registro" onsubmit="return validacion()">
+        <fieldset style="width: 90%">
+            <legend>Registro</legend>
+            <label for="registro_nombre">Nombre:<br></label><input type="text" name="nombre" id="registro_nombre"><br>
+            <label for="registro_apellidos">Apellido:<br></label><input type="text" name="apellido" id="registro_apellido"><br>
+            <label for="registro_email">Email:<br></label><input type="email" name="email" id="registro_email"><br>
+            <label for="registro_password">Clave:<br></label><input type="password" name="password" id="registro_password"><br>
+            <label for="registro_comentarios">Comentarios:<br></label><textarea  name="comentarios" id="registro_comentarios" rows="10"></textarea><br>
+            
+            <input type="submit" value="Enviar">
+        </fieldset>
+    </form>
+
+    </div>
+</center>
+<div class="footer">
+	Trinidad Espindola Maria Jose 4EV<br>
+ Desarrolla Aplicaciones que se Ejecutan en el Cliente
+</div>
+
+</body>
+</html>
